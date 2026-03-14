@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Real-IAD: A Real-World Multi-View Dataset for Benchmarking Versatile Industrial Anomaly Detection">
+  <meta name="keywords" content="ViTAD, AD, MUAD">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Real-IAD: A Real-World Multi-View Dataset for Benchmarking Versatile Industrial Anomaly Detection</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+  
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="icon" href="../assets/images/favicon-32x32.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./assets/js/fontawesome.all.min.js"></script>
+  <script src="./assets/js/bulma-carousel.min.js"></script>
+  <script src="./assets/js/bulma-slider.min.js"></script>
+  <script src="./assets/js/index.js"></script>
+  <script>
+    function preventClick(event) {
+      event.preventDefault();
+    }
+  </script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Researches
+        </a>
+        <div class="navbar-dropdown">
+        <a class="navbar-navbar">
+          <a class="navbar-item" href="https://zhangzjn.github.io" style="color: #b02418; font-weight: bold; background-color: #e7bcb9;">
+          <a class="navbar-item" href="https://zhangzjn.github.io/#-publications" style="color: #b02418; font-weight: bold;">
+            More Researches
+          </a>
+        </a>
+        <div class="navbar">
+          <a class="navbar-item" href="https://zhangzjn.github.io/projects/ViTAD" style="color: #6a99d0; font-weight: bold; background-color: #dce3f2;"> 
+            ViTAD
+          </a>
+          <a class="navbar-item" href="https://zhangzjn.github.io/projects/InvAD">
+            InvAD
+          </a>
+          <a class="navbar-item" href="https://lewandofskee.github.io/projects/diad/">
+            DiAD
+          </a>
+          <a class="navbar-item" href="https://zhangzjn.github.io/projects/ViTAD">
+            ViTAD
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="#">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <!-- <a class="navbar-link">
+          More Researches
+        </a> -->
+        <!-- <div class="navbar-dropdown"> -->
+        <a class="navbar-navbar">
+          <!-- <a class="navbar-item" href="https://zhangzjn.github.io" style="color: #b02418; font-weight: bold; background-color: #e7bcb9;"> -->
+          <!-- <a class="navbar-item" href="https://zhangzjn.github.io/#-publications" style="color: #b02418; font-weight: bold;">
+            More Researches
+          </a> -->
+        </a>
+        <div class="navbar">
+          <a class="navbar-item" href="https://realiad4ad.github.io/Real-IAD/" style="color: #6a99d0; font-weight: bold; background-color: #dce3f2;"> 
+            Real-IAD
+          </a>
+          <a class="navbar-item" href="https://realiad4ad.github.io/Real-IAD_D3/">
+            Real-IAD D³
+          </a>
+          <a class="navbar-item" href="https://realiad4ad.github.io/Real-IAD_Variety/">
+            Real-IAD Variety
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Real-IAD: A Real-World Multi-View Dataset for Benchmarking Versatile Industrial Anomaly Detection</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"> <a href="https://scholar.google.com/citations?user=fqte5H4AAAAJ&hl=zh-CN&oi=ao">Chengjie Wang</a><sup>1,2</sup>, </span>
+            <span class="author-block"> <a href="https://scholar.google.com/citations?user=58aMZ6oAAAAJ&hl=zh-CN&oi=ao">Wenbing Zhu</a><sup>3,4</sup>, </span>
+            <span class="author-block"> <a href="https://scholar.google.com/citations?user=yYviZ-oAAAAJ&hl=zh-CN&oi=ao">Bin-Bin Gao</a><sup>2</sup>, </span>
+            <span class="author-block"> <a href="https://scholar.google.com/citations?user=fa4NkScAAAAJ&hl=zh-CN&oi=ao">Zhenye Gan</a><sup>2</sup>, </span>
+            <span class="author-block"> <a href="https://zhangzjn.github.io">Jiangning Zhang</a><sup>2</sup>, </span>
+            <span class="author-block"> <a href="https://scholar.google.com/citations?user=TBlEbQIAAAAJ&hl=zh-CN&oi=ao">Zhihao Gu</a><sup>1</sup>, </span>
+            <span class="author-block"> <a href="#">Shuguang Qian</a><sup>4</sup>, </span>
+            <span class="author-block"> <a href="https://scholar.google.com/citations?user=FBfC58EAAAAJ&hl=zh-CN&oi=ao">Mingang Chen</a><sup>5</sup>, </span>
+            <span class="author-block"> <a href="https://scholar.google.com/citations?user=yd58y_0AAAAJ&hl=zh-CN&oi=ao">Lizhuang Ma</a><sup>1</sup>, </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University &nbsp </span>
+            <span class="author-block"><sup>2</sup>Youtu Lab, Tencent &nbsp </span>
+            <span class="author-block"><sup>3</sup>Fudan University &nbsp </span>
+            <span class="author-block"><sup>4</sup>Rongcheer Co., Ltd &nbsp </span>
+            <span class="author-block"><sup>5</sup>Shanghai Development Center of Computer Software Technology &nbsp </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2403.12580"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/TencentYoutuResearch/AnomalyDetection_Real-IAD"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Hugging Face Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/Real-IAD/Real-IAD/"
+                   class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <img src="./assets/images/hf-logo.svg" alt="Hugging Face" width="20" height="20">
+                    </span>
+                    <span>Hugging Face</span>
+                </a>
+              </span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Dataset Download</h2>
+        <div class="content has-text-justified">
+          <p>
+            If you are interested in using the dataset, you can download it at <a href="https://huggingface.co/datasets/Real-IAD/Real-IAD"><img src="https://huggingface.co/front/assets/huggingface_logo.svg" alt="Hugging Face" style="height: 1em; vertical-align: middle;"> Hugging Face</a>. Your access request will be automatically approved. For further questions, please feel free to send emails to <a href="", onclick="preventClick(event)">realiad4ad@outlook.com</a>.
+          </p>
+        </div>
+        <h2 class="title is-3">Dataset Organization</h2>
+        <div class="content has-text-justified">
+          <p>
+            Real-IAD dataset provide three main files, each serving a different purpose to cater to your needs.
+          </p>
+          <ol>
+            <li><strong>realiad_1024</strong>: This is a version with a resolution of 1024 &times; 1024 (downsampled from realiad_raw), with a manageable size of around 53GB. It is tailored to meet the needs of most researchers.</li>
+            <li><strong>realiad_raw</strong>: This is the raw, high-resolution data, with a size of approximately 507GB.</li>
+            <li><strong>realiad_jsons.zip</strong>: This file consists of data splits in JSON format, providing a structured and organized way to access specific portions of the dataset as needed.</li>
+          </ol>
+          <img src="./assets/images/email_format.png"
+            class="interpolation-image"
+            alt="Interpolate start reference image."/> 
+          
+          <!-- <ul>
+            <li>"<span style="font-weight: bold">AK</span>" refers to "<span style="font-weight: bold">pit</span>" in English.</li>
+            <li>"<span style="font-weight: bold">BX</span>" refers to "<span style="font-weight: bold">deformation</span>" in English.</li>
+            <li>"<span style="font-weight: bold">CH</span>" refers to "<span style="font-weight: bold">abrasion</span>" in English.</li>
+            <li>"<span style="font-weight: bold">HS</span>" refers to "<span style="font-weight: bold">scratch</span>" in English.</li>
+            <li>"<span style="font-weight: bold">PS</span>" refers to "<span style="font-weight: bold">damage</span>" in English.</li>
+            <li>"<span style="font-weight: bold">QS</span>" refers to "<span style="font-weight: bold">missing parts</span>" in English.</li>
+            <li>"<span style="font-weight: bold">YW</span>" refers to "<span style="font-weight: bold">foreign objects</span>" in English.</li>
+            <li>"<span style="font-weight: bold">ZW</span>" refers to "<span style="font-weight: bold">contamination</span>" in English.</li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
+
+    <style>
+      table {
+        width: 70%;
+        border-collapse: collapse;
+      }
+      
+      table, th, td {
+        /* border: 1px solid black; */
+        padding: 10px;
+        text-align: left;
+      }
+      
+      tr:nth-child(odd) {
+        background-color: #f2f2f2;
+      }
+    </style>
+    <div class="content has-text-justified">
+      <p>The correspondence between the code (represented by the folder name) and the defect type:</p>
+    </div>
+    
+    <table>
+      <tr>
+        <th>Code (Folder Name)</th>
+        <th>Defect Type</th> 
+      </tr>
+      <tr>
+        <td>AK</td>
+        <td>pit</td> 
+      </tr>
+      <tr>
+        <td>BX</td>
+        <td>deformation</td>
+      </tr>
+      <tr>
+        <td>CH</td>
+        <td>abrasion</td>
+      </tr>
+      <tr>
+        <td>HS</td>
+        <td>scratch</td>
+      </tr>
+      <tr>
+        <td>PS</td>
+        <td>damage</td>
+      </tr>
+      <tr>
+        <td>QS</td>
+        <td>missing parts</td>
+      </tr>
+      <tr>
+        <td>YW</td>
+        <td>foreign objects</td>
+      </tr>
+      <tr>
+        <td>ZW</td>
+        <td>contamination</td>
+      </tr>
+    </table>
+
+    <div class="columns is-centered"></div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Collection Pipeline of Real-IAD</h2>
+        <div class="content has-text-justified">
+          <p>
+            The Real-IAD dataset originates from a real production line, encompassing steps such as Material Preparation, Prototype Construction, Data Collection, Annotation, and Cleaning.
+            Material Preparation, Prototype Construction, Data Collection, Annotation are done by staffs from Rongcheer Co., Ltd.
+          </p>
+        </div>
+        <img src="./assets/images/pipeline.png"
+            class="interpolation-image"
+            alt="Interpolate start reference image."/>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">    
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Real-IAD Dataset</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered interpolation-panel">
+      <div class="column is has-text-centered">
+        <img src="./assets/images/sample_data.png"
+            class="interpolation-image"
+            alt="Interpolate start reference image."/>
+        <img src="./assets/images/sample_data2.png"
+          class="interpolation-image"
+          alt="Interpolate start reference image."/>
+        <img src="./assets/images/RIAD_detail2.svg"
+            class="interpolation-image"
+            alt="Interpolate start reference image."/>
+      </div>
+    </div>
+</div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @inproceedings{wang2024real,
+        title={Real-iad: A real-world multi-view dataset for benchmarking versatile industrial anomaly detection},
+        author={Wang, Chengjie and Zhu, Wenbing and Gao, Bin-Bin and Gan, Zhenye and Zhang, Jiangning and Gu, Zhihao and Qian, Shuguang and Chen, Mingang and Ma, Lizhuang},
+        booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+        pages={22883--22892},
+        year={2024}
+      }
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- <a class="icon-link"
+         href="./assets/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i> -->
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
