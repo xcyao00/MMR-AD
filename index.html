@@ -181,6 +181,16 @@
                 </a>
               </span>
 
+              <span class="link-block">
+                <a href="https://www.modelscope.cn/datasets/xcyao00/MMR-AD/"
+                   class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <img src="./assets/images/modelscope-logo.svg" alt="Model Scope" width="20" height="20">
+                    </span>
+                    <span>Model Scope</span>
+                </a>
+              </span>
+
             </div>
 
           </div>
@@ -199,7 +209,7 @@
         <h2 class="title is-3">Dataset Download</h2>
         <div class="content has-text-justified">
           <p>
-            If you are interested in using the dataset, you can download it at <a href="https://huggingface.co/datasets/xcyao00/MMR-AD"><img src="https://huggingface.co/front/assets/huggingface_logo.svg" alt="Hugging Face" style="height: 1em; vertical-align: middle;"> Hugging Face</a>.
+            If you are interested in using the dataset, you can download it at <a href="https://huggingface.co/datasets/xcyao00/MMR-AD"><img src="https://huggingface.co/front/assets/huggingface_logo.svg" alt="Hugging Face" style="height: 1em; vertical-align: middle;"> Hugging Face</a> or <a href="https://www.modelscope.cn/datasets/xcyao00/MMR-AD/"><img src="./assets/images/modelscope-logo.svg" alt="Model Scope" style="height: 1em; vertical-align: middle;"> Model Scope</a>.
           </p>
         </div>
         <h2 class="title is-3">Dataset Organization</h2>
@@ -216,16 +226,89 @@
             class="interpolation-image"
             alt="Interpolate start reference image."/>  -->
           
-          <!-- <ul>
-            <li>"<span style="font-weight: bold">AK</span>" refers to "<span style="font-weight: bold">pit</span>" in English.</li>
-            <li>"<span style="font-weight: bold">BX</span>" refers to "<span style="font-weight: bold">deformation</span>" in English.</li>
-            <li>"<span style="font-weight: bold">CH</span>" refers to "<span style="font-weight: bold">abrasion</span>" in English.</li>
-            <li>"<span style="font-weight: bold">HS</span>" refers to "<span style="font-weight: bold">scratch</span>" in English.</li>
-            <li>"<span style="font-weight: bold">PS</span>" refers to "<span style="font-weight: bold">damage</span>" in English.</li>
-            <li>"<span style="font-weight: bold">QS</span>" refers to "<span style="font-weight: bold">missing parts</span>" in English.</li>
-            <li>"<span style="font-weight: bold">YW</span>" refers to "<span style="font-weight: bold">foreign objects</span>" in English.</li>
-            <li>"<span style="font-weight: bold">ZW</span>" refers to "<span style="font-weight: bold">contamination</span>" in English.</li>
-          </ul> -->
+          <div class="tree-container">
+            <h4>📂 MMR-AD数据集目录结构</h4>
+            
+            <!-- 根目录开始 -->
+            <ul class="root-ul">
+                <li>
+                  <!-- 第一层：mmr-ad -->
+                  <span class="icon folder">📁</span> <strong class="highlight">MMR-AD</strong>
+                  <!-- 第二层：mvtec (现在被包在里面了) -->
+                  <ul>  
+                    <li>
+                      <span class="icon folder">📁</span> <strong>mvtec</strong>
+                        <ul>
+                            <!-- Bottle 类别 -->
+                            <li>
+                                <span class="icon folder">📁</span> <strong>bottle</strong>
+                                <ul>
+                                    <li>
+                                        <span class="icon folder">📁</span> ground_truth
+                                        <!-- 这里可以继续展开 ground_truth 的内容，如缺陷类型文件夹 -->
+                                    </li>
+                                    <li>
+                                        <span class="icon folder">📁</span> test
+                                        <!-- test 下通常有 good 和 defect 文件夹 -->
+                                    </li>
+                                    <li>
+                                        <span class="icon folder">📁</span> test_good
+                                    </li>
+                                    <li>
+                                        <span class="icon folder">📁</span> train_good
+                                    </li>
+                                    <li>
+                                        <span class="icon file">📄</span> bbox_annos.json
+                                    </li>
+                                    <li>
+                                        <span class="icon file">📄</span> text_annos.json
+                                    </li>
+                                    <li>
+                                        <span class="icon file">📄</span> reference.json
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Cable 类别 -->
+                            <li>
+                                <span class="icon folder">📁</span> <strong>cable</strong>
+                                <ul>
+                                    <li>
+                                        <span class="icon folder">📁</span> ground_truth
+                                    </li>
+                                    <li>
+                                        <span class="icon folder">📁</span> test
+                                    </li>
+                                    <li style="list-style: none; color: #888; padding-left: 5px;">...</li>
+                                    <li>
+                                        <span class="icon file">📄</span> reference.json
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- 其他类别示例 (折叠表示) -->
+                            <li>
+                                <span class="icon folder">📁</span> carpet
+                            </li>
+                            <li>
+                                <span class="icon folder">📁</span> grid
+                            </li>
+                            <li>
+                                <span class="icon folder">📁</span> hazelnut
+                            </li>
+                            <li style="list-style: none; color: #888; padding-left: 5px;">...</li>
+                            <!-- ... 等等 -->
+                        </ul>
+                </li>
+            </ul>
+            <li style="list-style: none; color: #888; padding-left: 5px;">...</li>
+        </div>
+        <p>
+            The MMR-AD dataset consists of multiple sub-datasets, each of which contains multiple classes.
+            Taking bottle as an example, <strong>bbox-annos.json</strong> contains the original bbox annotations, 
+            <strong>text_annos.json</strong> contains the annotated text data, <strong>reference.json</strong> stores the reference image set for each image, <strong>ground_truth</strong> has mask annotations, <strong>test</strong> is divided into subdirectories according to anomaly types, and each subdirectory contains anomalous samples of the corresponding anomaly type,
+            <strong>test_good</strong> contains the normal test samples, and <strong>train_good</strong> contains the normal training samples.
+        </p>
         </div>
       </div>
     </div>
